@@ -1,0 +1,4 @@
+/* Localized versions of Info.plist keys */
+
+"NSHumanReadableCopyright" = "版权所有 © 2024 Jordan Baird";
+"CFBundleDisplayName" = "Ice";

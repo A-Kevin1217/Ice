@@ -85,7 +85,9 @@ struct GeneralSettingsPane: View {
 
     @ViewBuilder
     private var launchAtLogin: some View {
-        LaunchAtLogin.Toggle()
+        LaunchAtLogin.Toggle {
+            Text(LocalizedStringKey("Launch at login"))
+        }
     }
 
     @ViewBuilder
@@ -114,14 +116,14 @@ struct GeneralSettingsPane: View {
 
     @ViewBuilder
     private var iceIconOptions: some View {
-        Toggle("Show Ice icon", isOn: manager.bindings.showIceIcon)
+        Toggle(LocalizedStringKey("Show Ice icon"), isOn: manager.bindings.showIceIcon)
             .annotation {
                 if !manager.showIceIcon {
-                    Text("You can still access Ice's settings by right-clicking an empty area in the menu bar")
+                    Text(LocalizedStringKey("You can still access Ice's settings by right-clicking an empty area in the menu bar"))
                 }
             }
         if manager.showIceIcon {
-            IceMenu("Ice icon") {
+            IceMenu(LocalizedStringKey("Ice icon")) {
                 ForEach(ControlItemImageSet.userSelectableIceIcons) { imageSet in
                     menuItem(for: imageSet)
                 }
@@ -136,7 +138,7 @@ struct GeneralSettingsPane: View {
             } title: {
                 menuItem(for: manager.iceIcon)
             }
-            .annotation("Choose a custom icon to show in the menu bar")
+            .annotation(LocalizedStringKey("Choose a custom icon to show in the menu bar"))
             .fileImporter(
                 isPresented: $isImportingCustomIceIcon,
                 allowedContentTypes: [.image]
@@ -171,13 +173,13 @@ struct GeneralSettingsPane: View {
 
     @ViewBuilder
     private var useIceBar: some View {
-        Toggle("Use Ice Bar", isOn: manager.bindings.useIceBar)
-            .annotation("Show hidden menu bar items in a separate bar below the menu bar")
+        Toggle(LocalizedStringKey("Use Ice Bar"), isOn: manager.bindings.useIceBar)
+            .annotation(LocalizedStringKey("Show hidden menu bar items in a separate bar below the menu bar"))
     }
 
     @ViewBuilder
     private var iceBarLocationPicker: some View {
-        IcePicker("Location", selection: manager.bindings.iceBarLocation) {
+        IcePicker(LocalizedStringKey("Location"), selection: manager.bindings.iceBarLocation) {
             ForEach(IceBarLocation.allCases) { location in
                 Text(location.localized).icePickerID(location)
             }
@@ -185,31 +187,31 @@ struct GeneralSettingsPane: View {
         .annotation {
             switch manager.iceBarLocation {
             case .dynamic:
-                Text("The Ice Bar's location changes based on context")
+                Text(LocalizedStringKey("The Ice Bar's location changes based on context"))
             case .mousePointer:
-                Text("The Ice Bar is centered below the mouse pointer")
+                Text(LocalizedStringKey("The Ice Bar is centered below the mouse pointer"))
             case .iceIcon:
-                Text("The Ice Bar is centered below the Ice icon")
+                Text(LocalizedStringKey("The Ice Bar is centered below the Ice icon"))
             }
         }
     }
 
     @ViewBuilder
     private var showOnClick: some View {
-        Toggle("Show on click", isOn: manager.bindings.showOnClick)
-            .annotation("Click inside an empty area of the menu bar to show hidden menu bar items")
+        Toggle(LocalizedStringKey("Show on click"), isOn: manager.bindings.showOnClick)
+            .annotation(LocalizedStringKey("Click inside an empty area of the menu bar to show hidden menu bar items"))
     }
 
     @ViewBuilder
     private var showOnHover: some View {
-        Toggle("Show on hover", isOn: manager.bindings.showOnHover)
-            .annotation("Hover over an empty area of the menu bar to show hidden menu bar items")
+        Toggle(LocalizedStringKey("Show on hover"), isOn: manager.bindings.showOnHover)
+            .annotation(LocalizedStringKey("Hover over an empty area of the menu bar to show hidden menu bar items"))
     }
 
     @ViewBuilder
     private var showOnScroll: some View {
-        Toggle("Show on scroll", isOn: manager.bindings.showOnScroll)
-            .annotation("Scroll or swipe in the menu bar to toggle hidden menu bar items")
+        Toggle(LocalizedStringKey("Show on scroll"), isOn: manager.bindings.showOnScroll)
+            .annotation(LocalizedStringKey("Scroll or swipe in the menu bar to toggle hidden menu bar items"))
     }
 
     @ViewBuilder
@@ -224,10 +226,10 @@ struct GeneralSettingsPane: View {
             .disabled(isApplyingOffset)
         } label: {
             IceLabeledContent {
-                Button("Apply") {
+                Button(LocalizedStringKey("Apply")) {
                     applyOffset()
                 }
-                .help("Apply the current spacing")
+                .help(LocalizedStringKey("Apply the current spacing"))
                 .disabled(isApplyingOffset || !hasSpacingSliderValueChanged)
 
                 if isApplyingOffset {
@@ -242,12 +244,12 @@ struct GeneralSettingsPane: View {
                         Image(systemName: "arrow.counterclockwise.circle.fill")
                     }
                     .buttonStyle(.borderless)
-                    .help("Reset to the default spacing")
+                    .help(LocalizedStringKey("Reset to the default spacing"))
                     .disabled(isApplyingOffset || !isActualOffsetDifferentFromDefault)
                 }
             } label: {
                 HStack {
-                    Text("Menu bar item spacing")
+                    Text(LocalizedStringKey("Menu bar item spacing"))
                     BetaBadge()
                 }
             }
@@ -292,7 +294,7 @@ struct GeneralSettingsPane: View {
 
     @ViewBuilder
     private var autoRehideOptions: some View {
-        Toggle("Automatically rehide", isOn: manager.bindings.autoRehide)
+        Toggle(LocalizedStringKey("Automatically rehide"), isOn: manager.bindings.autoRehide)
         if manager.autoRehide {
             if case .timed = manager.rehideStrategy {
                 VStack {

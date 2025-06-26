@@ -56,6 +56,9 @@ struct AboutSettingsPane: View {
                 Text(Constants.copyright)
                     .font(.system(size: minFrameDimension / 37))
                     .foregroundStyle(.tertiary)
+                Text("简体中文 汉化：小丞")
+                    .font(.system(size: minFrameDimension / 37))
+                    .foregroundStyle(.tertiary)
             }
             .fontWeight(.medium)
             .padding([.vertical, .trailing])
@@ -64,24 +67,24 @@ struct AboutSettingsPane: View {
         .onFrameChange(update: $frame)
         .bottomBar {
             HStack {
-                Button("Quit Ice") {
+                Button(LocalizedStringKey("Quit Ice")) {
                     NSApp.terminate(nil)
                 }
                 Spacer()
-                Button("Acknowledgements") {
+                Button(LocalizedStringKey("Acknowledgements")) {
                     NSWorkspace.shared.open(acknowledgementsURL)
                 }
-                Button("Contribute") {
+                Button(LocalizedStringKey("Contribute")) {
                     openURL(contributeURL)
                 }
-                Button("Report a Bug") {
+                Button(LocalizedStringKey("Report a Bug")) {
                     openURL(issuesURL)
                 }
                 Button {
                     openURL(donateURL)
                 } label: {
                     Label(
-                        "Support Ice",
+                        LocalizedStringKey("Support Ice"),
                         systemImage: "heart.circle.fill"
                     )
                 }

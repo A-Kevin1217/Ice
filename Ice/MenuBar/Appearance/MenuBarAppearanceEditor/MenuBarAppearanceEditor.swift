@@ -68,7 +68,7 @@ struct MenuBarAppearanceEditor: View {
             } else {
                 StaticPartialEditor()
             }
-            IceSection("Menu Bar Shape") {
+            IceSection(LocalizedStringKey("Menu Bar Shape")) {
                 shapePicker
                 isInset
             }
@@ -79,7 +79,7 @@ struct MenuBarAppearanceEditor: View {
                         font: .callout.bold()
                     ) {
                         Label {
-                            Text("Tip: you can also edit these settings by right-clicking in an empty area of the menu bar")
+                            Text(LocalizedStringKey("Tip: you can also edit these settings by right-clicking in an empty area of the menu bar"))
                         } icon: {
                             Image(systemName: "lightbulb")
                         }
@@ -90,7 +90,7 @@ struct MenuBarAppearanceEditor: View {
                 !appState.menuBarManager.isMenuBarHiddenBySystemUserDefaults,
                 appearanceManager.configuration != .defaultConfiguration
             {
-                Button("Reset") {
+                Button(LocalizedStringKey("Reset")) {
                     appearanceManager.configuration = .defaultConfiguration
                 }
                 .controlSize(.large)
@@ -101,13 +101,13 @@ struct MenuBarAppearanceEditor: View {
 
     @ViewBuilder
     private var isDynamicToggle: some View {
-        Toggle("Use dynamic appearance", isOn: appearanceManager.bindings.configuration.isDynamic)
-            .annotation("Apply different settings based on the current system appearance")
+        Toggle(LocalizedStringKey("Use dynamic appearance"), isOn: appearanceManager.bindings.configuration.isDynamic)
+            .annotation(LocalizedStringKey("Apply different settings based on the current system appearance"))
     }
 
     @ViewBuilder
     private var cannotEdit: some View {
-        Text("Ice cannot edit the appearance of automatically hidden menu bars")
+        Text(LocalizedStringKey("Ice cannot edit the appearance of automatically hidden menu bars"))
             .font(.title3)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
@@ -146,9 +146,9 @@ private struct UnlabeledPartialEditor: View {
 
     @ViewBuilder
     private var tintPicker: some View {
-        IceLabeledContent("Tint") {
+        IceLabeledContent(LocalizedStringKey("Tint")) {
             HStack {
-                IcePicker("Tint", selection: $configuration.tintKind) {
+                IcePicker(LocalizedStringKey("Tint"), selection: $configuration.tintKind) {
                     ForEach(MenuBarTintKind.allCases) { tintKind in
                         Text(tintKind.localized).icePickerID(tintKind)
                     }
@@ -179,18 +179,18 @@ private struct UnlabeledPartialEditor: View {
 
     @ViewBuilder
     private var shadowToggle: some View {
-        Toggle("Shadow", isOn: $configuration.hasShadow)
+        Toggle(LocalizedStringKey("Shadow"), isOn: $configuration.hasShadow)
     }
 
     @ViewBuilder
     private var borderToggle: some View {
-        Toggle("Border", isOn: $configuration.hasBorder)
+        Toggle(LocalizedStringKey("Border"), isOn: $configuration.hasBorder)
     }
 
     @ViewBuilder
     private var borderColor: some View {
         if configuration.hasBorder {
-            IceLabeledContent("Border Color") {
+            IceLabeledContent(LocalizedStringKey("Border Color")) {
                 CustomColorPicker(
                     selection: $configuration.borderColor,
                     supportsOpacity: true,
@@ -204,7 +204,7 @@ private struct UnlabeledPartialEditor: View {
     private var borderWidth: some View {
         if configuration.hasBorder {
             IcePicker(
-                "Border Width",
+                LocalizedStringKey("Border Width"),
                 selection: $configuration.borderWidth
             ) {
                 Text("1").icePickerID(1.0)

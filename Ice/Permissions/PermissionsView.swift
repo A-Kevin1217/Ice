@@ -11,9 +11,9 @@ struct PermissionsView: View {
 
     private var continueButtonText: LocalizedStringKey {
         if case .hasRequiredPermissions = permissionsManager.permissionsState {
-            "Continue in Limited Mode"
+            LocalizedStringKey("Continue in Limited Mode")
         } else {
-            "Continue"
+            LocalizedStringKey("Continue")
         }
     }
 

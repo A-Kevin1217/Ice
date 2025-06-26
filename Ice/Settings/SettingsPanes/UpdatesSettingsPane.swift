@@ -37,7 +37,7 @@ struct UpdatesSettingsPane: View {
     @ViewBuilder
     private var automaticallyCheckForUpdates: some View {
         Toggle(
-            "Automatically check for updates",
+            LocalizedStringKey("Automatically check for updates"),
             isOn: updatesManager.bindings.automaticallyChecksForUpdates
         )
     }
@@ -45,7 +45,7 @@ struct UpdatesSettingsPane: View {
     @ViewBuilder
     private var automaticallyDownloadUpdates: some View {
         Toggle(
-            "Automatically download updates",
+            LocalizedStringKey("Automatically download updates"),
             isOn: updatesManager.bindings.automaticallyDownloadsUpdates
         )
     }
@@ -53,7 +53,7 @@ struct UpdatesSettingsPane: View {
     @ViewBuilder
     private var checkForUpdates: some View {
         HStack {
-            Button("Check for Updates…") {
+            Button(LocalizedStringKey("Check for Updates…")) {
                 updatesManager.checkForUpdates()
             }
             .controlSize(.large)
@@ -61,7 +61,7 @@ struct UpdatesSettingsPane: View {
             Spacer()
 
             HStack(spacing: 2) {
-                Text("Last checked:")
+                Text(LocalizedStringKey("Last checked:"))
                 Text(lastUpdateCheckString)
             }
             .lineLimit(1)

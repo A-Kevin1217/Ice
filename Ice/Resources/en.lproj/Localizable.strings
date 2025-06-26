@@ -1,0 +1,212 @@
+/* General Settings */
+"General" = "General";
+"Menu Bar Layout" = "Menu Bar Layout";
+"Menu Bar Appearance" = "Menu Bar Appearance";
+"Hotkeys" = "Hotkeys";
+"Advanced" = "Advanced";
+"Updates" = "Updates";
+"About" = "About";
+
+/* Ice Bar Location */
+"Dynamic" = "Dynamic";
+"Mouse pointer" = "Mouse pointer";
+"Ice icon" = "Ice icon";
+
+/* Menu Bar Tint Kind */
+"Solid" = "Solid";
+"Gradient" = "Gradient";
+
+/* Rehide Strategy */
+"Smart" = "Smart";
+"Timed" = "Timed";
+"Focused app" = "Focused app";
+
+/* System Appearance */
+"Light Appearance" = "Light Appearance";
+"Dark Appearance" = "Dark Appearance";
+
+/* General Settings Pane */
+"none" = "none";
+"default" = "default";
+"max" = "max";
+"second" = "second";
+"seconds" = "seconds";
+"You can still access Ice's settings by right-clicking an empty area in the menu bar" = "You can still access Ice's settings by right-clicking an empty area in the menu bar";
+"Choose image…" = "Choose image…";
+"The Ice Bar's location changes based on context" = "The Ice Bar's location changes based on context";
+"The Ice Bar is centered below the mouse pointer" = "The Ice Bar is centered below the mouse pointer";
+"The Ice Bar is centered below the Ice icon" = "The Ice Bar is centered below the Ice icon";
+"Menu bar item spacing" = "Menu bar item spacing";
+"Note: You may need to log out and back in for this setting to apply properly." = "Note: You may need to log out and back in for this setting to apply properly.";
+"Menu bar items are rehidden using a smart algorithm" = "Menu bar items are rehidden using a smart algorithm";
+"Menu bar items are rehidden after a fixed amount of time" = "Menu bar items are rehidden after a fixed amount of time";
+"Menu bar items are rehidden when the focused app changes" = "Menu bar items are rehidden when the focused app changes";
+
+/* Hotkeys Settings Pane */
+"Toggle the hidden section" = "Toggle the hidden section";
+"Toggle the always-hidden section" = "Toggle the always-hidden section";
+"Search menu bar items" = "Search menu bar items";
+"Enable the Ice Bar" = "Enable the Ice Bar";
+"Show section dividers" = "Show section dividers";
+"Toggle application menus" = "Toggle application menus";
+
+/* Menu Bar Layout Settings Pane */
+"Drag to arrange your menu bar items" = "Drag to arrange your menu bar items";
+"Tip: you can also arrange menu bar items by Command + dragging them in the menu bar" = "Tip: you can also arrange menu bar items by Command + dragging them in the menu bar";
+"Ice cannot arrange menu bar items in automatically hidden menu bars" = "Ice cannot arrange menu bar items in automatically hidden menu bars";
+"Launch at login" = "Launch at login";
+"Section" = "Section";
+"Show" = "Show";
+"Hide" = "Hide";
+"Menu bar layout requires screen recording permissions" = "Menu bar layout requires screen recording permissions";
+"Go to Advanced Settings" = "Go to Advanced Settings";
+
+/* Ice Bar */
+"The Ice Bar requires screen recording permissions." = "The Ice Bar requires screen recording permissions.";
+"Open Ice Settings" = "Open Ice Settings";
+"Ice cannot display menu bar items for automatically hidden menu bars" = "Ice cannot display menu bar items for automatically hidden menu bars";
+"Unable to display menu bar items" = "Unable to display menu bar items";
+
+/* Search */
+"Search menu bar items…" = "Search menu bar items…";
+
+/* Menu Bar Appearance Editor */
+"Menu Bar Appearance" = "Menu Bar Appearance";
+"Tip: you can also edit these settings by right-clicking in an empty area of the menu bar" = "Tip: you can also edit these settings by right-clicking in an empty area of the menu bar";
+"Ice cannot edit the appearance of automatically hidden menu bars" = "Ice cannot edit the appearance of automatically hidden menu bars";
+"Hold to Preview" = "Hold to Preview";
+
+/* Advanced Settings Pane */
+"Insert divider items" = "Insert divider items";
+"between sections" = "between sections";
+"Option + click one of Ice's menu bar items, or inside an empty area of the menu bar to show the section" = "Option + click one of Ice's menu bar items, or inside an empty area of the menu bar to show the section";
+"Option + click one of Ice's menu bar items to show the section" = "Option + click one of Ice's menu bar items to show the section";
+"Show on hover delay" = "Show on hover delay";
+"Temporarily shown item delay" = "Temporarily shown item delay";
+"Permission Granted" = "Permission Granted";
+
+/* Updates Settings Pane */
+"Last checked:" = "Last checked:";
+
+/* Beta Badge */
+"BETA" = "BETA";
+
+/* About Settings Pane */
+"Ice" = "Ice";
+"Version" = "Version";
+
+/* Menu Bar Shape Picker */
+"None" = "None";
+"Full" = "Full";
+"Split" = "Split";
+"No shape kind selected" = "No shape kind selected";
+
+/* Hotkey Recorder */
+"Type Hotkey" = "Type Hotkey";
+"ERROR" = "ERROR";
+"Record Hotkey" = "Record Hotkey";
+
+/* Permissions View */
+"Permissions" = "Permissions";
+"Ice needs permission to manage the menu bar." = "Ice needs permission to manage the menu bar.";
+"Absolutely no personal information is collected or stored." = "Absolutely no personal information is collected or stored.";
+"Quit" = "Quit";
+"Ice needs this to:" = "Ice needs this to:";
+"Ice can work in a limited mode without this permission." = "Ice can work in a limited mode without this permission.";
+"Grant Permission" = "Grant Permission";
+"Continue" = "Continue";
+"Continue in Limited Mode" = "Continue in Limited Mode";
+
+/* Permission Types */
+"Accessibility" = "Accessibility";
+"Screen Recording" = "Screen Recording";
+
+/* Permission Details */
+"Get real-time information about the menu bar." = "Get real-time information about the menu bar.";
+"Arrange menu bar items." = "Arrange menu bar items.";
+"Edit the menu bar's appearance." = "Edit the menu bar's appearance.";
+"Display images of individual menu bar items." = "Display images of individual menu bar items.";
+
+/* General Settings */
+"Show Ice icon" = "Show Ice icon";
+"You can still access Ice's settings by right-clicking an empty area in the menu bar" = "You can still access Ice's settings by right-clicking an empty area in the menu bar";
+"Ice icon" = "Ice icon";
+"Use Ice Bar" = "Use Ice Bar";
+"Show hidden menu bar items in a separate bar below the menu bar" = "Show hidden menu bar items in a separate bar below the menu bar";
+"Location" = "Location";
+"The Ice Bar's location changes based on context" = "The Ice Bar's location changes based on context";
+"The Ice Bar is centered below the mouse pointer" = "The Ice Bar is centered below the mouse pointer";
+"The Ice Bar is centered below the Ice icon" = "The Ice Bar is centered below the Ice icon";
+"Show on click" = "Show on click";
+"Click inside an empty area of the menu bar to show hidden menu bar items" = "Click inside an empty area of the menu bar to show hidden menu bar items";
+"Show on hover" = "Show on hover";
+"Hover over an empty area of the menu bar to show hidden menu bar items" = "Hover over an empty area of the menu bar to show hidden menu bar items";
+"Show on scroll" = "Show on scroll";
+"Scroll or swipe in the menu bar to toggle hidden menu bar items" = "Scroll or swipe in the menu bar to toggle hidden menu bar items";
+"Apply" = "Apply";
+"Apply the current spacing" = "Apply the current spacing";
+"Reset to the default spacing" = "Reset to the default spacing";
+"Menu bar item spacing" = "Menu bar item spacing";
+"Automatically rehide" = "Automatically rehide";
+
+/* Advanced Settings */
+"Hide application menus when showing menu bar items" = "Hide application menus when showing menu bar items";
+"Make more room in the menu bar by hiding the left application menus if needed" = "Make more room in the menu bar by hiding the left application menus if needed";
+"Show section dividers" = "Show section dividers";
+"Insert divider items" = "Insert divider items";
+"between sections" = "between sections";
+"Enable always-hidden section" = "Enable always-hidden section";
+"Always-hidden section can be shown" = "Always-hidden section can be shown";
+"Option + click one of Ice's menu bar items, or inside an empty area of the menu bar to show the section" = "Option + click one of Ice's menu bar items, or inside an empty area of the menu bar to show the section";
+"Option + click one of Ice's menu bar items to show the section" = "Option + click one of Ice's menu bar items to show the section";
+"Show on hover delay" = "Show on hover delay";
+"The amount of time to wait before showing on hover" = "The amount of time to wait before showing on hover";
+"Temporarily shown item delay" = "Temporarily shown item delay";
+"The amount of time to wait before hiding temporarily shown menu bar items" = "The amount of time to wait before hiding temporarily shown menu bar items";
+"Show all sections when Command + dragging menu bar items" = "Show all sections when Command + dragging menu bar items";
+
+/* Updates Settings */
+"Automatically check for updates" = "Automatically check for updates";
+"Automatically download updates" = "Automatically download updates";
+"Check for Updates…" = "Check for Updates…";
+"Last checked:" = "Last checked:";
+
+/* Menu Bar Appearance */
+"Menu Bar Shape" = "Menu Bar Shape";
+"Tip: you can also edit these settings by right-clicking in an empty area of the menu bar" = "Tip: you can also edit these settings by right-clicking in an empty area of the menu bar";
+"Reset" = "Reset";
+"Use dynamic appearance" = "Use dynamic appearance";
+"Apply different settings based on the current system appearance" = "Apply different settings based on the current system appearance";
+"Ice cannot edit the appearance of automatically hidden menu bars" = "Ice cannot edit the appearance of automatically hidden menu bars";
+"Tint" = "Tint";
+"Shadow" = "Shadow";
+"Border" = "Border";
+"Border Color" = "Border Color";
+"Border Width" = "Border Width";
+
+/* Support */
+"Support Ice" = "Support Ice";
+
+/* Additional UI strings */
+"Choose a custom icon to show in the menu bar" = "Choose a custom icon to show in the menu bar";
+"Menu Bar Sections" = "Menu Bar Sections";
+"Menu Bar Items" = "Menu Bar Items";
+"Other" = "Other";
+"Quit Ice" = "Quit Ice";
+"Acknowledgements" = "Acknowledgements";
+"Contribute" = "Contribute";
+"Report a Bug" = "Report a Bug";
+"Visible" = "Visible";
+"Hidden" = "Hidden";
+"Always-Hidden" = "Always-Hidden";
+"Shape Kind" = "Shape Kind";
+"None" = "None";
+"Full" = "Full";
+"Split" = "Split";
+"Drag to arrange your menu bar items" = "Drag to arrange your menu bar items";
+"Tip: you can also arrange menu bar items by Command + dragging them in the menu bar" = "Tip: you can also arrange menu bar items by Command + dragging them in the menu bar";
+"Ice cannot arrange menu bar items in automatically hidden menu bars" = "Ice cannot arrange menu bar items in automatically hidden menu bars";
+"Launch at login" = "Launch at login";
+"Section" = "Section";
+"Show" = "Show";
+"Hide" = "Hide";

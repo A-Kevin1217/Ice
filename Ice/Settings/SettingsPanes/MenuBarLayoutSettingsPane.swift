@@ -23,7 +23,7 @@ struct MenuBarLayoutSettingsPane: View {
 
     @ViewBuilder
     private var header: some View {
-        Text("Drag to arrange your menu bar items")
+        Text(LocalizedStringKey("Drag to arrange your menu bar items"))
             .font(.title2)
 
         IceGroupBox {
@@ -32,7 +32,7 @@ struct MenuBarLayoutSettingsPane: View {
                 font: .callout.bold()
             ) {
                 Label {
-                    Text("Tip: you can also arrange menu bar items by Command + dragging them in the menu bar")
+                    Text(LocalizedStringKey("Tip: you can also arrange menu bar items by Command + dragging them in the menu bar"))
                 } icon: {
                     Image(systemName: "lightbulb")
                 }
@@ -51,7 +51,7 @@ struct MenuBarLayoutSettingsPane: View {
 
     @ViewBuilder
     private var cannotArrange: some View {
-        Text("Ice cannot arrange menu bar items in automatically hidden menu bars")
+        Text(LocalizedStringKey("Ice cannot arrange menu bar items in automatically hidden menu bars"))
             .font(.title3)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
@@ -78,7 +78,7 @@ struct MenuBarLayoutSettingsPane: View {
             section.isEnabled
         {
             VStack(alignment: .leading, spacing: 4) {
-                Text("\(section.name.displayString) Section")
+                Text("\(section.name.displayString) \(String(localized: "Section"))")
                     .font(.system(size: 14))
                     .padding(.leading, 2)
 
