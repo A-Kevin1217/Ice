@@ -66,7 +66,11 @@ final class ControlItem {
         guard let window else {
             return nil
         }
-        return CGWindowID(window.windowNumber)
+        let windowNum = window.windowNumber
+        guard windowNum >= 0, windowNum <= UInt32.max else {
+            return nil
+        }
+        return CGWindowID(UInt32(windowNum))
     }
 
     /// A Boolean value that indicates whether the control item serves as
@@ -425,7 +429,7 @@ final class ControlItem {
         let menu = NSMenu(title: "Ice")
 
         let settingsItem = NSMenuItem(
-            title: "Ice Settings…",
+            title: String(localized: "Ice Settings…"),
             action: #selector(AppDelegate.openSettingsWindow),
             keyEquivalent: ","
         )
@@ -435,7 +439,7 @@ final class ControlItem {
         menu.addItem(.separator())
 
         let searchItem = NSMenuItem(
-            title: "Search Menu Bar Items",
+            title: String(localized: "Search Menu Bar Items"),
             action: #selector(showSearchPanel),
             keyEquivalent: ""
         )
@@ -461,8 +465,24 @@ final class ControlItem {
                 // Section doesn't exist, or is disabled.
                 continue
             }
+            
+            // 使用完整短语而不是拼接，方便完整本地化
+            let actionText: String
+            switch name {
+            case .hidden:
+                actionText = section.isHidden ? 
+                    String(localized: "Show the Hidden Section") : 
+                    String(localized: "Hide the Hidden Section")
+            case .alwaysHidden:
+                actionText = section.isHidden ? 
+                    String(localized: "Show the Always-Hidden Section") : 
+                    String(localized: "Hide the Always-Hidden Section")
+            case .visible:
+                actionText = ""
+            }
+            
             let item = NSMenuItem(
-                title: "\(section.isHidden ? String(localized: "Show") : String(localized: "Hide")) the \(name.displayString) \(String(localized: "Section"))",
+                title: actionText,
                 action: #selector(toggleMenuBarSection),
                 keyEquivalent: ""
             )
@@ -494,7 +514,7 @@ final class ControlItem {
         menu.addItem(.separator())
 
         let checkForUpdatesItem = NSMenuItem(
-            title: "Check for Updates…",
+            title: String(localized: "Check for Updates…"),
             action: #selector(checkForUpdates),
             keyEquivalent: ""
         )
@@ -504,7 +524,7 @@ final class ControlItem {
         menu.addItem(.separator())
 
         let quitItem = NSMenuItem(
-            title: "Quit Ice",
+            title: String(localized: "Quit Ice"),
             action: #selector(NSApp.terminate),
             keyEquivalent: "q"
         )

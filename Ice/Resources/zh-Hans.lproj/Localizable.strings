@@ -213,3 +213,25 @@
 "Border" = "边框";
 "Border Color" = "边框颜色";
 "Border Width" = "边框宽度";
+
+/* Menu Items */
+"Ice Settings…" = "Ice 设置…";
+"Search Menu Bar Items" = "搜索菜单栏项目";
+"Check for Updates…" = "检查更新…";
+"Quit Ice" = "退出 Ice";
+
+/* Section Names */
+"visible section" = "可见区域";
+"hidden section" = "隐藏区域";
+"always-hidden section" = "始终隐藏区域";
+
+/* Menu Bar Section Display */
+"the Visible Section" = "可见区域";
+"the Hidden Section" = "隐藏区域";
+"the Always-Hidden Section" = "始终隐藏区域";
+
+/* Complete Menu Item Phrases */
+"Show the Hidden Section" = "显示隐藏区域";
+"Hide the Hidden Section" = "隐藏隐藏区域";
+"Show the Always-Hidden Section" = "显示始终隐藏区域";
+"Hide the Always-Hidden Section" = "隐藏始终隐藏区域";

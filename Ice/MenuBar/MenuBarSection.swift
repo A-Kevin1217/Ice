@@ -26,9 +26,9 @@ final class MenuBarSection {
         /// A string to use for logging purposes.
         var logString: String {
             switch self {
-            case .visible: "visible section"
-            case .hidden: "hidden section"
-            case .alwaysHidden: "always-hidden section"
+            case .visible: String(localized: "visible section")
+            case .hidden: String(localized: "hidden section")
+            case .alwaysHidden: String(localized: "always-hidden section")
             }
         }
     }

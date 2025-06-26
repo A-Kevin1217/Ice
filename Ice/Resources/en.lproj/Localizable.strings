@@ -210,3 +210,25 @@
 "Section" = "Section";
 "Show" = "Show";
 "Hide" = "Hide";
+
+/* Menu Items */
+"Ice Settings…" = "Ice Settings…";
+"Search Menu Bar Items" = "Search Menu Bar Items";
+"Check for Updates…" = "Check for Updates…";
+"Quit Ice" = "Quit Ice";
+
+/* Section Names */
+"visible section" = "visible section";
+"hidden section" = "hidden section";
+"always-hidden section" = "always-hidden section";
+
+/* Menu Bar Section Display */
+"the Visible Section" = "the Visible Section";
+"the Hidden Section" = "the Hidden Section";
+"the Always-Hidden Section" = "the Always-Hidden Section";
+
+/* Complete Menu Item Phrases */
+"Show the Hidden Section" = "Show the Hidden Section";
+"Hide the Hidden Section" = "Hide the Hidden Section";
+"Show the Always-Hidden Section" = "Show the Always-Hidden Section";
+"Hide the Always-Hidden Section" = "Hide the Always-Hidden Section";
