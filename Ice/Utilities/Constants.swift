@@ -8,10 +8,10 @@ import Foundation
 enum Constants {
     // swiftlint:disable force_unwrapping
     /// The version string in the app's bundle.
-    static let appVersion = Bundle.main.versionString!
+    static let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 
     /// The user-readable copyright string in the app's bundle.
-    static let copyright = Bundle.main.copyrightString!
+    static let copyright = Bundle.main.object(forInfoDictionaryKey: "NSHumanReadableCopyright") as! String
 
     /// The bundle identifier of the app.
     static let bundleIdentifier = Bundle.main.bundleIdentifier!
