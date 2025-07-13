@@ -57,9 +57,6 @@ final class AppState: ObservableObject {
     /// The window that contains the permissions interface.
     private(set) weak var permissionsWindow: NSWindow?
 
-    /// A Boolean value that indicates whether the "ShowOnHover" feature is prevented.
-    private(set) var isShowOnHoverPrevented = false
-
     /// Storage for internal observers.
     private var cancellables = Set<AnyCancellable>()
 
@@ -286,16 +283,6 @@ final class AppState: ObservableObject {
             NSApp.deactivate()
         }
         NSApp.setActivationPolicy(policy)
-    }
-
-    /// Prevents the "ShowOnHover" feature.
-    func preventShowOnHover() {
-        isShowOnHoverPrevented = true
-    }
-
-    /// Allows the "ShowOnHover" feature.
-    func allowShowOnHover() {
-        isShowOnHoverPrevented = false
     }
 }
 

@@ -282,13 +282,13 @@ extension EventManager {
                 if appState.menuBarManager.sections.contains(where: { !$0.isHidden }) || isMouseInsideIceIcon {
                     // We have a left click that is inside the menu bar while at least one
                     // section is visible or the mouse is inside the Ice icon.
-                    appState.preventShowOnHover()
+                    appState.menuBarManager.showOnHoverAllowed = false
                 }
             case .rightMouseDown:
                 if appState.menuBarManager.sections.contains(where: { !$0.isHidden }) {
                     // We have a right click that is inside the menu bar while at least one
                     // section is visible.
-                    appState.preventShowOnHover()
+                    appState.menuBarManager.showOnHoverAllowed = false
                 }
             default:
                 break
@@ -297,7 +297,7 @@ extension EventManager {
             // We have a left or right click that is inside the menu bar, outside
             // a menu bar item, and outside the application menu, so it _must_ be
             // inside an empty menu bar space.
-            appState.preventShowOnHover()
+            appState.menuBarManager.showOnHoverAllowed = false
         }
     }
 
@@ -352,7 +352,7 @@ extension EventManager {
         // Make sure the "ShowOnHover" feature is enabled and not prevented.
         guard
             appState.settingsManager.generalSettingsManager.showOnHover,
-            !appState.isShowOnHoverPrevented
+            appState.menuBarManager.showOnHoverAllowed
         else {
             return
         }

@@ -6,6 +6,17 @@
 import Combine
 import SwiftUI
 
+// MARK: - Array
+
+extension Array {
+    /// Removes elements from the beginning of the array that satisfy the given predicate.
+    mutating func trimPrefix(while predicate: (Element) -> Bool) {
+        while let first = first, predicate(first) {
+            removeFirst()
+        }
+    }
+}
+
 // MARK: - Bundle
 
 extension Bundle {

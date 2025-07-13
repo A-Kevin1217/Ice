@@ -30,6 +30,9 @@ final class MenuBarManager: ObservableObject {
 
     /// A Boolean value that indicates whether the application menus are hidden.
     private var isHidingApplicationMenus = false
+    
+    /// A Boolean value that indicates whether show on hover is allowed.
+    var showOnHoverAllowed = true
 
     /// The managed sections in the menu bar.
     private(set) var sections = [MenuBarSection]()
@@ -394,6 +397,11 @@ final class MenuBarManager: ObservableObject {
     /// Returns the menu bar section with the given name.
     func section(withName name: MenuBarSection.Name) -> MenuBarSection? {
         sections.first { $0.name == name }
+    }
+    
+    /// Returns the control item with the given name.
+    func controlItem(withName name: MenuBarSection.Name) -> ControlItem? {
+        section(withName: name)?.controlItem
     }
 }
 

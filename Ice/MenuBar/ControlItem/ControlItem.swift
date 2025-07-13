@@ -14,6 +14,15 @@ final class ControlItem {
         case iceIcon = "SItem"
         case hidden = "HItem"
         case alwaysHidden = "AHItem"
+        
+        /// Legacy menu bar info for the control item with this identifier.
+        var legacyInfo: MenuBarItemLegacyInfo {
+            switch self {
+            case .iceIcon: .iceIcon
+            case .hidden: .hiddenControlItem
+            case .alwaysHidden: .alwaysHiddenControlItem
+            }
+        }
     }
 
     /// Possible hiding states for control items.
@@ -407,10 +416,14 @@ final class ControlItem {
                 appState.settingsManager.advancedSettingsManager.canToggleAlwaysHiddenSection
             {
                 if let alwaysHiddenSection = appState.menuBarManager.section(withName: .alwaysHidden) {
-                    alwaysHiddenSection.toggle()
+                    Task {
+                        await alwaysHiddenSection.toggle()
+                    }
                 }
             } else {
-                section?.toggle()
+                Task {
+                    await section?.toggle()
+                }
             }
         case .rightMouseUp:
             statusItem.showMenu(createMenu(with: appState))
