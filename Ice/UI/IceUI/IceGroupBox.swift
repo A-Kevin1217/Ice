@@ -5,26 +5,50 @@
 
 import SwiftUI
 
+/// A group box with a header, content, and footer.
 struct IceGroupBox<Header: View, Content: View, Footer: View>: View {
     private let header: Header
     private let content: Content
     private let footer: Footer
-    private let padding: CGFloat
+    private let padding: EdgeInsets
+
+    private var backgroundShape: some InsettableShape {
+        if #available(macOS 26.0, *) {
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+        } else {
+            RoundedRectangle(cornerRadius: 7, style: .circular)
+        }
+    }
 
     init(
-        padding: CGFloat = 10,
+        padding: EdgeInsets = .iceGroupBoxDefaultPadding,
         @ViewBuilder header: () -> Header,
         @ViewBuilder content: () -> Content,
         @ViewBuilder footer: () -> Footer
     ) {
-        self.padding = padding
         self.header = header()
         self.content = content()
         self.footer = footer()
+        self.padding = padding
     }
 
     init(
-        padding: CGFloat = 10,
+        padding: CGFloat,
+        @ViewBuilder header: () -> Header,
+        @ViewBuilder content: () -> Content,
+        @ViewBuilder footer: () -> Footer
+    ) {
+        self.init(padding: EdgeInsets(all: padding)) {
+            header()
+        } content: {
+            content()
+        } footer: {
+            footer()
+        }
+    }
+
+    init(
+        padding: EdgeInsets = .iceGroupBoxDefaultPadding,
         @ViewBuilder content: () -> Content,
         @ViewBuilder footer: () -> Footer
     ) where Header == EmptyView {
@@ -38,7 +62,21 @@ struct IceGroupBox<Header: View, Content: View, Footer: View>: View {
     }
 
     init(
-        padding: CGFloat = 10,
+        padding: CGFloat,
+        @ViewBuilder content: () -> Content,
+        @ViewBuilder footer: () -> Footer
+    ) where Header == EmptyView {
+        self.init(padding: EdgeInsets(all: padding)) {
+            EmptyView()
+        } content: {
+            content()
+        } footer: {
+            footer()
+        }
+    }
+
+    init(
+        padding: EdgeInsets = .iceGroupBoxDefaultPadding,
         @ViewBuilder header: () -> Header,
         @ViewBuilder content: () -> Content
     ) where Footer == EmptyView {
@@ -52,7 +90,21 @@ struct IceGroupBox<Header: View, Content: View, Footer: View>: View {
     }
 
     init(
-        padding: CGFloat = 10,
+        padding: CGFloat,
+        @ViewBuilder header: () -> Header,
+        @ViewBuilder content: () -> Content
+    ) where Footer == EmptyView {
+        self.init(padding: EdgeInsets(all: padding)) {
+            header()
+        } content: {
+            content()
+        } footer: {
+            EmptyView()
+        }
+    }
+
+    init(
+        padding: EdgeInsets = .iceGroupBoxDefaultPadding,
         @ViewBuilder content: () -> Content
     ) where Header == EmptyView, Footer == EmptyView {
         self.init(padding: padding) {
@@ -65,8 +117,21 @@ struct IceGroupBox<Header: View, Content: View, Footer: View>: View {
     }
 
     init(
+        padding: CGFloat,
+        @ViewBuilder content: () -> Content
+    ) where Header == EmptyView, Footer == EmptyView {
+        self.init(padding: EdgeInsets(all: padding)) {
+            EmptyView()
+        } content: {
+            content()
+        } footer: {
+            EmptyView()
+        }
+    }
+
+    init(
         _ title: LocalizedStringKey,
-        padding: CGFloat = 10,
+        padding: EdgeInsets = .iceGroupBoxDefaultPadding,
         @ViewBuilder content: () -> Content
     ) where Header == Text, Footer == EmptyView {
         self.init(padding: padding) {
@@ -77,27 +142,39 @@ struct IceGroupBox<Header: View, Content: View, Footer: View>: View {
         }
     }
 
-    var body: some View {
-        VStack(alignment: .leading) {
-            header
-            VStack {
-                content
-            }
-            .padding(padding)
-            .background {
-                backgroundShape
-                    .fill(.quinary)
-                    .overlay {
-                        backgroundShape
-                            .stroke(.quaternary)
-                    }
-            }
-            footer
+    init(
+        _ title: LocalizedStringKey,
+        padding: CGFloat,
+        @ViewBuilder content: () -> Content
+    ) where Header == Text, Footer == EmptyView {
+        self.init(padding: EdgeInsets(all: padding)) {
+            Text(title)
+                .font(.headline)
+        } content: {
+            content()
         }
     }
 
-    @ViewBuilder
-    private var backgroundShape: some Shape {
-        RoundedRectangle(cornerRadius: 7, style: .circular)
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            header
+            content
+                .padding(padding)
+                .background {
+                    backgroundShape
+                        .fill(.quinary)
+                        .strokeBorder(.quaternary)
+                }
+                .containerShape(backgroundShape)
+            footer
+        }
     }
+}
+
+extension EdgeInsets {
+    /// The default padding for an ``IceGroupBox``.
+    static let iceGroupBoxDefaultPadding: EdgeInsets = {
+        let padding: CGFloat = if #available(macOS 26.0, *) { 12 } else { 10 }
+        return EdgeInsets(all: padding)
+    }()
 }

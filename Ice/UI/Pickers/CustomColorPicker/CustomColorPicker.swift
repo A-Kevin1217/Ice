@@ -107,12 +107,14 @@ struct CustomColorPicker: NSViewRepresentable {
         )
     }
 
-    func sizeThatFits(
-        _ proposal: ProposedViewSize,
-        nsView: NSColorWell,
+    func preferredContentSize(
+        forProposedSize proposedContentSize: CGSize,
+        nsView: CustomColorPickerView,
         context: Context
     ) -> CGSize? {
         switch nsView.controlSize {
+        case .extraLarge:
+            CGSize(width: 64, height: 34)
         case .large:
             CGSize(width: 55, height: 30)
         case .regular:
@@ -126,3 +128,4 @@ struct CustomColorPicker: NSViewRepresentable {
         }
     }
 }
+
