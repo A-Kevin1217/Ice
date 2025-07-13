@@ -74,33 +74,26 @@ struct IceSection<Header: View, Content: View, Footer: View>: View {
     }
 
     var body: some View {
-        if isBordered {
-            IceGroupBox(padding: spacing) {
-                header
-            } content: {
-                dividedContent
-            } footer: {
-                footer
-            }
-        } else {
-            VStack(alignment: .leading) {
-                header
-                dividedContent
-                footer
-            }
-        }
-    }
+        VStack(alignment: .leading, spacing: spacing) {
+            header
 
-    @ViewBuilder
-    private var dividedContent: some View {
-        if hasDividers {
-            _VariadicView.Tree(IceSectionLayout(spacing: spacing)) {
-                content
-                    .frame(maxWidth: .infinity)
+            if isBordered {
+                _VariadicView.Tree(IceSectionLayout(spacing: spacing)) {
+                    content
+                }
+                .padding(10)
+                .background {
+                    RoundedRectangle(cornerRadius: 7, style: .circular)
+                        .fill(.quaternary.opacity(0.25))
+                }
+            } else {
+                _VariadicView.Tree(IceSectionLayout(spacing: spacing)) {
+                    content
+                }
+                .padding(.leading, 10)
             }
-        } else {
-            content
-                .frame(maxWidth: .infinity)
+
+            footer
         }
     }
 }
@@ -124,13 +117,9 @@ private struct IceSectionLayout: _VariadicView_UnaryViewRoot {
 
     @ViewBuilder
     func body(children: _VariadicView.Children) -> some View {
-        let last = children.last?.id
         VStack(alignment: .leading, spacing: spacing) {
             ForEach(children) { child in
                 child
-                if child.id != last {
-                    Divider()
-                }
             }
         }
     }

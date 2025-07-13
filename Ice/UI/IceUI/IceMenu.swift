@@ -12,39 +12,51 @@ struct IceMenu<Title: View, Label: View, Content: View>: View {
     private let label: Label
     private let content: Content
 
-    /// Creates a menu with the given content, title, and label.
-    ///
-    /// - Parameters:
-    ///   - content: A group of menu items.
-    ///   - title: A view to display inside the menu.
-    ///   - label: A view to display as an external label for the menu.
     init(
-        @ViewBuilder content: () -> Content,
         @ViewBuilder title: () -> Title,
-        @ViewBuilder label: () -> Label
+        @ViewBuilder label: () -> Label,
+        @ViewBuilder content: () -> Content
     ) {
         self.title = title()
         self.label = label()
         self.content = content()
     }
 
-    /// Creates a menu with the given content, title, and label key.
-    ///
-    /// - Parameters:
-    ///   - labelKey: A string key for the menu's external label.
-    ///   - content: A group of menu items.
-    ///   - title: A view to display inside the menu.
     init(
-        _ labelKey: LocalizedStringKey,
-        @ViewBuilder content: () -> Content,
-        @ViewBuilder title: () -> Title
-    ) where Label == Text {
+        _ title: LocalizedStringKey,
+        @ViewBuilder label: () -> Label,
+        @ViewBuilder content: () -> Content
+    ) where Title == Text {
         self.init {
+            Text(title)
+        } label: {
+            label()
+        } content: {
             content()
-        } title: {
+        }
+    }
+
+    init(
+        @ViewBuilder title: () -> Title,
+        @ViewBuilder content: () -> Content
+    ) where Label == EmptyView {
+        self.init {
             title()
         } label: {
-            Text(labelKey)
+            EmptyView()
+        } content: {
+            content()
+        }
+    }
+
+    init(
+        _ title: LocalizedStringKey,
+        @ViewBuilder content: () -> Content
+    ) where Title == Text, Label == EmptyView {
+        self.init(title) {
+            EmptyView()
+        } content: {
+            content()
         }
     }
 

@@ -10,7 +10,7 @@ protocol BindingExposable {
     /// A lens that exposes bindings to the writable properties of this type.
     typealias Bindings = ExposedBindings<Self>
 
-    /// A lens that exposes bindings to the writable properties of this instance.
+    /// A lens that exposes bindings to the writable properties of this type.
     var bindings: Bindings { get }
 }
 
@@ -24,7 +24,7 @@ extension BindingExposable {
 @dynamicMemberLookup
 struct ExposedBindings<Base: BindingExposable> {
     /// The object whose bindings are exposed.
-    private let base: Base
+    let base: Base
 
     /// Creates a lens that exposes the bindings of the given object.
     init(base: Base) {

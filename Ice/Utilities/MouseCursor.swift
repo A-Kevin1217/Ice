@@ -3,20 +3,46 @@
 //  Ice
 //
 
-import CoreGraphics
+import Cocoa
 
 /// A namespace for mouse cursor operations.
 enum MouseCursor {
-    /// Returns the location of the mouse cursor in the coordinate space used by
-    /// the `AppKit` framework, with the origin at the bottom left of the screen.
-    static var locationAppKit: CGPoint? {
-        CGEvent(source: nil)?.unflippedLocation
+    /// Returns the current mouse location in AppKit coordinates.
+    ///
+    /// This method returns the mouse location in the coordinate system
+    /// used by AppKit, which has its origin at the bottom left of the
+    /// screen, with the y-axis pointing up.
+    static var locationAppKit: NSPoint? {
+        do {
+            let event = try systemWideMouseLocation()
+            return NSPoint(x: event.locationInWindow.x, y: event.locationInWindow.y)
+        } catch {
+            Logger.mouseCursor.error("Error getting AppKit mouse location: \(error)")
+            return nil
+        }
     }
 
-    /// Returns the location of the mouse cursor in the coordinate space used by
-    /// the `CoreGraphics` framework, with the origin at the top left of the screen.
+    /// Returns the current mouse location in Core Graphics coordinates.
+    ///
+    /// This method returns the mouse location in the coordinate system
+    /// used by Core Graphics, which has its origin at the top left of
+    /// the screen, with the y-axis pointing down.
     static var locationCoreGraphics: CGPoint? {
-        CGEvent(source: nil)?.location
+        do {
+            let event = try systemWideMouseLocation()
+            return CGPoint(x: event.locationInWindow.x, y: event.locationInWindow.y)
+        } catch {
+            Logger.mouseCursor.error("Error getting Core Graphics mouse location: \(error)")
+            return nil
+        }
+    }
+
+    /// Returns an event containing the system-wide mouse location.
+    private static func systemWideMouseLocation() throws -> NSEvent {
+        guard let event = NSEvent.mouseLocation(pressedMouseButtons: 0) else {
+            throw CocoaError(.featureUnsupported)
+        }
+        return event
     }
 
     /// Hides the mouse cursor and increments the hide cursor count.

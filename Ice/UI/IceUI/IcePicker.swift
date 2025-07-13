@@ -14,8 +14,8 @@ struct IcePicker<Label: View, SelectionValue: Hashable, Content: View>: View {
 
     init(
         selection: Binding<SelectionValue>,
-        @ViewBuilder content: () -> Content,
-        @ViewBuilder label: () -> Label
+        @ViewBuilder label: () -> Label,
+        @ViewBuilder content: () -> Content
     ) {
         self._selection = selection
         self.label = label()
@@ -23,14 +23,14 @@ struct IcePicker<Label: View, SelectionValue: Hashable, Content: View>: View {
     }
 
     init(
-        _ titleKey: LocalizedStringKey,
+        _ title: LocalizedStringKey,
         selection: Binding<SelectionValue>,
         @ViewBuilder content: () -> Content
     ) where Label == Text {
         self.init(selection: selection) {
+            Text(title)
+        } content: {
             content()
-        } label: {
-            Text(titleKey)
         }
     }
 

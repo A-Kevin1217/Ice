@@ -53,28 +53,46 @@ struct IceForm<Content: View>: View {
         }
     }
 
-    @ViewBuilder
     private var contentStack: some View {
-        VStack(alignment: alignment, spacing: spacing) {
+        _VariadicView.Tree(IceFormLayout(spacing: spacing)) {
             content
-                .toggleStyle(IceFormToggleStyle())
         }
         .padding(padding)
-        .onFrameChange(update: $contentFrame)
+        .background(GeometryReader { geometry in
+            Color.clear.preference(
+                key: FramePreferenceKey.self,
+                value: geometry.frame(in: .local)
+            )
+        })
+        .onPreferenceChange(FramePreferenceKey.self) { frame in
+            contentFrame = frame
+        }
+    }
+}
+
+private struct IceFormLayout: _VariadicView_UnaryViewRoot {
+    let spacing: CGFloat
+
+    @ViewBuilder
+    func body(children: _VariadicView.Children) -> some View {
+        VStack(alignment: .leading, spacing: spacing) {
+            ForEach(children) { child in
+                child
+            }
+        }
     }
 }
 
 private struct IceFormToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
-        IceLabeledContent {
-            Toggle(isOn: configuration.$isOn) {
-                configuration.label
-            }
-            .labelsHidden()
-            .toggleStyle(.switch)
-            .controlSize(.mini)
-        } label: {
+        HStack {
             configuration.label
+            Spacer()
+            configuration.isOn ? Image(systemName: "checkmark") : nil
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            configuration.isOn.toggle()
         }
     }
 }
